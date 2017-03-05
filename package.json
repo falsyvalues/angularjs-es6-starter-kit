@@ -1,0 +1,10 @@
+{
+  "name": "angularjs-es6-starter-kit",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-resource": "^1.6.2",
+    "angular-ui-router": "^0.4.2"
+  }
+}
