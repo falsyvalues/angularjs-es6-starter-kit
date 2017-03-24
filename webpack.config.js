@@ -66,7 +66,22 @@ module.exports = (function makeWebpackConfig() {
 				// Reference: https://github.com/babel/babel-loader#babel-is-injecting-helpers-into-each-file-and-bloating-my-code
 				plugins: ['transform-runtime']
 			}
-		}, {
+		},
+		{
+			test: /\.scss$/,
+			loader: [
+				// STYLE LOADER
+				// Reference: https://github.com/webpack-contrib/style-loader
+				'style-loader',
+				// CSS LOADER
+				// Reference: https://github.com/webpack-contrib/css-loader
+				'css-loader',
+				// SASS LOADER
+				// Reference: https://github.com/webpack-contrib/sass-loader
+				'sass-loader'
+			]
+		},
+		{
 			// HTML LOADER
 			// Reference: https://github.com/webpack/raw-loader
 			// Allow loading html through js
