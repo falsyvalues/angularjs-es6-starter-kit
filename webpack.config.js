@@ -69,17 +69,21 @@ module.exports = (function makeWebpackConfig() {
 		},
 		{
 			test: /\.scss$/,
-			loader: [
-				// STYLE LOADER
-				// Reference: https://github.com/webpack-contrib/style-loader
-				'style-loader',
-				// CSS LOADER
-				// Reference: https://github.com/webpack-contrib/css-loader
-				'css-loader',
-				// SASS LOADER
-				// Reference: https://github.com/webpack-contrib/sass-loader
-				'sass-loader'
-			]
+			// STYLE LOADER
+			// Reference: https://github.com/webpack-contrib/style-loader
+			// CSS LOADER
+			// Reference: https://github.com/webpack-contrib/css-loader
+			// SASS LOADER
+			// Reference: https://github.com/webpack-contrib/sass-loader
+			loader: 'style-loader!css-loader!sass-loader'
+		},
+		{
+			test: /\.css$/,
+			// STYLE LOADER
+			// Reference: https://github.com/webpack-contrib/style-loader
+			// CSS LOADER
+			// Reference: https://github.com/webpack-contrib/css-loader
+			loader: 'style-loader!css-loader'
 		},
 		{
 			// HTML LOADER
