@@ -59,7 +59,7 @@ module.exports = (function makeWebpackConfig() {
 			exclude: /node_modules/,
 			// We may use ng-annotate module later
 			// Reference: https://github.com/jeffling/ng-annotate-webpack-plugin
-			loader: [/*'ng-annotate',*/ 'babel'],
+			loader: 'babel',
 			query: {
 				// By default Babel is injecting helpers into each file that requires it.
 				// Require the babel runtime as a separate module to avoid the duplication.
