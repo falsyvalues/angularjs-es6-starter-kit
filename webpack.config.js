@@ -3,6 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var isProd = process.env.NODE_ENV === 'production';
 
@@ -83,7 +84,7 @@ module.exports = (function makeWebpackConfig() {
 			// Reference: https://github.com/webpack-contrib/style-loader
 			// CSS LOADER
 			// Reference: https://github.com/webpack-contrib/css-loader
-			loader: 'style-loader!css-loader'
+			loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
 		},
 		{
 			// HTML LOADER
@@ -111,6 +112,13 @@ module.exports = (function makeWebpackConfig() {
 			filename: 'index.html',
 			inject: 'head'
 		})
+	);
+
+	// ExtractTextPlugin
+	//
+	// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md
+	config.plugins.push(
+		new ExtractTextPlugin('styles.css')
 	);
 
 	// Automatically move all modules defined outside of application directory to vendor bundle.
