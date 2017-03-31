@@ -51,49 +51,57 @@ module.exports = (function makeWebpackConfig() {
 	 */
 
 	config.module = {
-		preLoaders: [],
-		loaders: [{
-			// JS LOADER
-			// Reference: https://github.com/babel/babel-loader
-			// Transpile .js files using babel-loader (compile ES6 and ES7 into ES5 code)
-			test: /\.js$/,
-			exclude: /node_modules/,
-			// We may use ng-annotate module later
-			// Reference: https://github.com/jeffling/ng-annotate-webpack-plugin
-			loader: 'babel',
-			query: {
-				// By default Babel is injecting helpers into each file that requires it.
-				// Require the babel runtime as a separate module to avoid the duplication.
-				// Reference: https://github.com/babel/babel-loader#babel-is-injecting-helpers-into-each-file-and-bloating-my-code
-				plugins: ['transform-runtime']
+		rules: [
+			{
+				// JS LOADER
+				// Reference: https://github.com/babel/babel-loader
+				// Transpile .js files using babel-loader (compile ES6 and ES7 into ES5 code)
+				test: /\.js$/,
+				exclude: /node_modules/,
+				// We may use ng-annotate module later
+				// Reference: https://github.com/jeffling/ng-annotate-webpack-plugin
+				loader: 'babel-loader',
+				options: {
+					// By default Babel is injecting helpers into each file that requires it.
+					// Require the babel runtime as a separate module to avoid the duplication.
+					// Reference: https://github.com/babel/babel-loader#babel-is-injecting-helpers-into-each-file-and-bloating-my-code
+					plugins: ['transform-runtime']
+				}
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					// STYLE LOADER
+					// Reference: https://github.com/webpack-contrib/style-loader
+					'style-loader',
+					// CSS LOADER
+					// Reference: https://github.com/webpack-contrib/css-loader
+					'css-loader',
+					// SASS LOADER
+					// Reference: https://github.com/webpack-contrib/sass-loader
+					'sass-loader'
+				]
+			},
+			{
+				test: /\.css$/,
+				// STYLE LOADER
+				// Reference: https://github.com/webpack-contrib/style-loader
+				// CSS LOADER
+				// Reference: https://github.com/webpack-contrib/css-loader
+				loader: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: 'css-loader?sourceMap'
+				})
+			},
+			{
+				// HTML LOADER
+				// Reference: https://github.com/webpack/raw-loader
+				// Allow loading html through js
+				test: /\.html$/,
+				exclude: /node_modules/,
+				loader: 'raw-loader'
 			}
-		},
-		{
-			test: /\.scss$/,
-			// STYLE LOADER
-			// Reference: https://github.com/webpack-contrib/style-loader
-			// CSS LOADER
-			// Reference: https://github.com/webpack-contrib/css-loader
-			// SASS LOADER
-			// Reference: https://github.com/webpack-contrib/sass-loader
-			loader: 'style-loader!css-loader!sass-loader'
-		},
-		{
-			test: /\.css$/,
-			// STYLE LOADER
-			// Reference: https://github.com/webpack-contrib/style-loader
-			// CSS LOADER
-			// Reference: https://github.com/webpack-contrib/css-loader
-			loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
-		},
-		{
-			// HTML LOADER
-			// Reference: https://github.com/webpack/raw-loader
-			// Allow loading html through js
-			test: /\.html$/,
-			exclude: /node_modules/,
-			loader: 'raw'
-		}]
+		]
 	};
 
 	/**
@@ -118,7 +126,7 @@ module.exports = (function makeWebpackConfig() {
 	//
 	// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md
 	config.plugins.push(
-		new ExtractTextPlugin('styles.css')
+		new ExtractTextPlugin('style.css')
 	);
 
 	// Automatically move all modules defined outside of application directory to vendor bundle.
@@ -140,10 +148,6 @@ module.exports = (function makeWebpackConfig() {
 		config.plugins.push(
 			// http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
 			new webpack.NoErrorsPlugin(),
-			// Search for equal or similar files and deduplicate them in the output.
-			// This comes with some overhead for the entry chunk, but can reduce file size effectively.
-			// Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-			new webpack.optimize.DedupePlugin(),
 			// Minimize all JavaScript output of chunks. Loaders are switched into minimizing mode.
 			// Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
 			new webpack.optimize.UglifyJsPlugin({
