@@ -126,7 +126,7 @@ module.exports = (function makeWebpackConfig() {
 	//
 	// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md
 	config.plugins.push(
-		new ExtractTextPlugin('style.css')
+		new ExtractTextPlugin(isProd ? 'dist/style.[chunkhash].css' : 'dist/style.css')
 	);
 
 	// Automatically move all modules defined outside of application directory to vendor bundle.
