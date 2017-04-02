@@ -84,6 +84,8 @@ module.exports = (function makeWebpackConfig() {
 			},
 			{
 				test: /\.css$/,
+				// EXTRACT TEXT PLUGIN
+				// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin
 				// STYLE LOADER
 				// Reference: https://github.com/webpack-contrib/style-loader
 				// CSS LOADER
@@ -123,8 +125,8 @@ module.exports = (function makeWebpackConfig() {
 	);
 
 	// ExtractTextPlugin
-	//
-	// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin/blob/webpack-1/README.md
+	// Extracting css chunks into a separate file
+	// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin
 	config.plugins.push(
 		new ExtractTextPlugin(isProd ? 'dist/style.[chunkhash].css' : 'dist/style.css')
 	);
