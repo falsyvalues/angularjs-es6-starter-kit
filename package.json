@@ -6,8 +6,8 @@
 		"build": "rimraf dist && webpack --bail --progress --profile"
 	},
 	"dependencies": {
-		"angular": "^1.6.3",
-		"angular-resource": "^1.6.3",
+		"angular": "^1.6.4",
+		"angular-resource": "^1.6.4",
 		"angular-ui-router": "^0.4.2",
 		"normalize.css": "^6.0.0"
 	},
