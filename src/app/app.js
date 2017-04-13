@@ -4,7 +4,7 @@ import angularUiRouter from 'angular-ui-router';
 
 import {routing, run} from './app.config';
 
-import 'normalize.css';
+import './app.scss';
 
 angular.module('app', [angularResource, angularResource])
 	.config(routing)

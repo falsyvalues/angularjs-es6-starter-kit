@@ -69,30 +69,28 @@ module.exports = (function makeWebpackConfig() {
 				}
 			},
 			{
-				test: /\.scss$/,
-				use: [
+				test: /\.s?css$/,
+				use: ExtractTextPlugin.extract({
 					// STYLE LOADER
 					// Reference: https://github.com/webpack-contrib/style-loader
-					'style-loader',
-					// CSS LOADER
-					// Reference: https://github.com/webpack-contrib/css-loader
-					'css-loader',
-					// SASS LOADER
-					// Reference: https://github.com/webpack-contrib/sass-loader
-					'sass-loader'
-				]
-			},
-			{
-				test: /\.css$/,
-				// EXTRACT TEXT PLUGIN
-				// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin
-				// STYLE LOADER
-				// Reference: https://github.com/webpack-contrib/style-loader
-				// CSS LOADER
-				// Reference: https://github.com/webpack-contrib/css-loader
-				loader: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: 'css-loader?sourceMap'
+					use: [
+						{
+							// CSS LOADER
+							// Reference: https://github.com/webpack-contrib/css-loader
+							loader: 'css-loader',
+							options: {
+								sourceMap: true,
+								importLoader: true
+							}
+						},
+						{
+							// SASS LOADER
+							// Reference: https://github.com/webpack-contrib/sass-loader
+							loader: 'sass-loader',
+							options: {}
+						}
+					]
 				})
 			},
 			{
