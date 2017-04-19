@@ -80,8 +80,10 @@ module.exports = (function makeWebpackConfig() {
 							// Reference: https://github.com/webpack-contrib/css-loader
 							loader: 'css-loader',
 							options: {
-								sourceMap: true,
-								importLoader: true
+								importLoader: true,
+								// Reference: https://github.com/webpack/webpack/issues/189
+								minimize: true,
+								sourceMap: true
 							}
 						},
 						{
