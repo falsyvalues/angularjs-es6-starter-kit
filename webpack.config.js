@@ -81,6 +81,7 @@ module.exports = (function makeWebpackConfig() {
 							loader: 'css-loader',
 							options: {
 								importLoader: true,
+								// Enable CSS minification, this option has no connection to config.devtool
 								// Reference: https://github.com/webpack/webpack/issues/189
 								minimize: true,
 								sourceMap: true
