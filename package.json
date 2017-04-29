@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && webpack --bail --progress --profile"
+    "build": "rimraf dist && webpack --bail --progress --profile",
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty src/**"
   },
   "dependencies": {
     "angular": "^1.6.4",
