@@ -3,8 +3,8 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 
 ## TODO
 - [x] ES6
-- [x] ES6 examples for angular
 - [x] Babel as a JavaScript compiler
+- [ ] livereload and HMR
 - [x] [webpack](https://github.com/webpack/webpack) as module bundler
 - [x] Splitting bundles (vendor, app) with CommonsChunkPlugin for webpack
 - [x] UglifyJs for JavaScript
@@ -14,6 +14,9 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [x] stylelint
 - [x] enable stylelint in build process
 - [ ] autoprefixer via postcss?
+- [ ] default testing framework
+- [ ] Angular: ES6 code examples
+- [x] Angular: ui-router
 
 ## Dependencies
 Tools needed to run this starter kit:
