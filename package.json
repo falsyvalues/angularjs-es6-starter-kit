@@ -28,7 +28,7 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
-    "style-loader": "^0.17.0",
+    "style-loader": "^0.18.1",
     "stylelint": "^7.10.1",
     "webpack": "^2.5.1"
   }
