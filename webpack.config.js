@@ -92,6 +92,27 @@ module.exports = (function makeWebpackConfig() {
 							// Reference: https://github.com/webpack-contrib/sass-loader
 							loader: 'sass-loader',
 							options: {}
+						},
+						{
+							// POSTCSS LOADER
+							// Reference: https://github.com/postcss/postcss-loader
+							loader: 'postcss-loader',
+							options: {
+								config: {
+									// Reference: https://github.com/postcss/postcss-loader#context-ctx
+									ctx: {
+										// Reference: https://github.com/postcss/autoprefixer
+										autoprefixer: {
+											browsers: 'last 4 version'
+										}
+									}
+								},
+								// Reference: https://github.com/postcss/postcss-loader#sourcemap
+								sourceMap: true,
+								plugins: [
+									require('autoprefixer')()
+								]
+							}
 						}
 					]
 				})
