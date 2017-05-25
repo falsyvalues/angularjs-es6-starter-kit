@@ -12,7 +12,7 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [x] [editorconfig](http://editorconfig.org/)
 - [ ] NODE_ENV for configuration prod / dev
 - [x] stylelint
-- [x] enable stylelint in build process
+- [ ] enable stylelint in build process
 - [ ] autoprefixer via postcss?
 - [ ] default testing framework
 - [ ] Angular: ES6 code examples
