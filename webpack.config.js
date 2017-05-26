@@ -110,7 +110,9 @@ module.exports = (function makeWebpackConfig() {
 								// Reference: https://github.com/postcss/postcss-loader#sourcemap
 								sourceMap: true,
 								plugins: [
-									require('autoprefixer')()
+									require('autoprefixer')(),
+									// Reference: https://www.npmjs.com/package/postcss-loader#stylelint
+									require('stylelint')()
 								]
 							}
 						}
