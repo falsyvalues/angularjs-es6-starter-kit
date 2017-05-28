@@ -16,6 +16,7 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [x] autoprefixer
 - [x] stylelint in build process
 - [ ] stylelint configuration vs .editorconfig
+- [ ] separate tools configuration from webpack
 - [ ] default testing framework
 - [ ] Angular: ES6 code examples
 - [x] Angular: ui-router
