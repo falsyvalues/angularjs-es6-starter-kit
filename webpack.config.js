@@ -96,25 +96,7 @@ module.exports = (function makeWebpackConfig() {
 						{
 							// POSTCSS LOADER
 							// Reference: https://github.com/postcss/postcss-loader
-							loader: 'postcss-loader',
-							options: {
-								config: {
-									// Reference: https://github.com/postcss/postcss-loader#context-ctx
-									ctx: {
-										// Reference: https://github.com/postcss/autoprefixer
-										autoprefixer: {
-											browsers: 'last 4 version'
-										}
-									}
-								},
-								// Reference: https://github.com/postcss/postcss-loader#sourcemap
-								sourceMap: true,
-								plugins: [
-									require('autoprefixer')(),
-									// Reference: https://www.npmjs.com/package/postcss-loader#stylelint
-									require('stylelint')()
-								]
-							}
+							loader: 'postcss-loader'
 						}
 					]
 				})
