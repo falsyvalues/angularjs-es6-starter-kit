@@ -164,5 +164,11 @@ module.exports = (function makeWebpackConfig() {
 		);
 	}
 
+	config.devServer = {
+		contentBase: config.output.path,
+		compress: true,
+		port: 3000
+	};
+
 	return config;
 }());

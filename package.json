@@ -5,7 +5,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && webpack --bail --progress --profile",
-    "lint": "eslint --format=node_modules/eslint-formatter-pretty src/**"
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty src/**",
+    "dev": "webpack-dev-server"
   },
   "dependencies": {
     "angular": "^1.6.4",
@@ -33,6 +34,7 @@
     "style-loader": "^0.18.1",
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
