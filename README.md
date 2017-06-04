@@ -4,8 +4,9 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 ## TODO
 - [x] ES6
 - [x] Babel as a JavaScript compiler
-- [ ] dev server, livereload and possibly HMR
 - [x] [webpack](https://github.com/webpack/webpack) as module bundler
+- [x] webpack-dev-server
+- [ ] livereload and possibly HMR
 - [x] Splitting bundles (vendor, app) with CommonsChunkPlugin for webpack
 - [x] UglifyJs for JavaScript minification
 - [x] [eslint](https://github.com/eslint/eslint)
