@@ -164,6 +164,8 @@ module.exports = (function makeWebpackConfig() {
 		);
 	}
 
+	// Dev server configuration
+	// Reference: https://webpack.js.org/configuration/dev-server/#devserver
 	config.devServer = {
 		contentBase: config.output.path,
 		compress: true,
