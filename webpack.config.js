@@ -40,7 +40,7 @@ module.exports = (function makeWebpackConfig() {
 	};
 
 	// Choose a developer tool to enhance debugging.
-	// Reference: http://webpack.github.io/docs/configuration.html#devtool
+	// Reference: https://webpack.js.org/configuration/devtool/#devtool
 	config.devtool = 'source-map';
 
 	/**
@@ -114,8 +114,9 @@ module.exports = (function makeWebpackConfig() {
 
 	/**
 	 * Add additional plugins to the compiler
-	 * Reference: http://webpack.github.io/docs/configuration.html#plugins
-	 * List: http://webpack.github.io/docs/list-of-plugins.html
+	 * Reference: https://webpack.js.org/configuration/plugins/
+	 * List: https://webpack.js.org/plugins/
+	 * More: https://github.com/webpack-contrib/awesome-webpack#webpack-plugins
 	 */
 
 	config.plugins = [];
@@ -157,7 +158,7 @@ module.exports = (function makeWebpackConfig() {
 			// http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
 			new webpack.NoErrorsPlugin(),
 			// Minimize all JavaScript output of chunks. Loaders are switched into minimizing mode.
-			// Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
+			// Reference: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
 			new webpack.optimize.UglifyJsPlugin({
 				mangle: false
 			})
