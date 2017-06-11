@@ -20,6 +20,7 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [ ] stylelint configuration vs .editorconfig
 - [ ] separate tools configuration from webpack
 - [ ] default testing framework
+- [ ] Improve docs in general
 - [ ] Angular: ES6 code examples
 - [x] Angular: ui-router
 
