@@ -6,6 +6,6 @@ import {routing, run} from './app.config';
 
 import './app.scss';
 
-angular.module('app', [angularResource, angularResource])
+angular.module('app', [angularResource, angularUiRouter])
 	.config(routing)
 	.run(run);

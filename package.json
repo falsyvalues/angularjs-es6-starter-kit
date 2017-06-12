@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && webpack --bail --progress --profile",
-    "lint": "eslint --format=node_modules/eslint-formatter-pretty src/**",
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty src/**/*.js",
     "dev": "webpack-dev-server"
   },
   "dependencies": {
@@ -21,7 +21,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.4",
-    "eslint": "^3.19.0",
+    "eslint": "^4.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "html-loader": "^0.4.5",
