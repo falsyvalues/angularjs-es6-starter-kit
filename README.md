@@ -24,6 +24,7 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [ ] Improve docs in general
 - [ ] Angular: ES6 code examples
 - [x] Angular: ui-router
+- [x] Angular: resource
 
 ## Dependencies
 Tools needed to run this starter kit:
