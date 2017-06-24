@@ -18,7 +18,7 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [ ] postcss - consider colorguard and so on
 - [x] [autoprefixer](https://github.com/postcss/autoprefixer)
 - [x] [stylelint](https://github.com/stylelint/stylelint) in build process
-- [ ] stylelint configuration vs .editorconfig
+- [x] stylelint configuration vs .editorconfig
 - [ ] separate tools configuration from webpack
 - [ ] default testing framework
 - [ ] Improve docs in general
