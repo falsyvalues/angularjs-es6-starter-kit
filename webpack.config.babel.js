@@ -1,14 +1,12 @@
-'use strict';
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const isProd = process.env.NODE_ENV === 'production';
 
-var isProd = process.env.NODE_ENV === 'production';
-
-module.exports = (function makeWebpackConfig() {
-	var config = {};
+export default (function makeWebpackConfig() {
+	const config = {};
 
 	/**
 	 * Configuration begins here
@@ -145,7 +143,7 @@ module.exports = (function makeWebpackConfig() {
 		new webpack.optimize.CommonsChunkPlugin({
 			// Destination path (entry config) mapping is also needed here
 			name: 'dist/vendor',
-			minChunks: function (module, count) {
+			minChunks(module, count) {
 				return module.resource && (
 					module.resource.indexOf(path.resolve(__dirname, 'src', 'app')) === -1
 				);
@@ -174,4 +172,4 @@ module.exports = (function makeWebpackConfig() {
 	};
 
 	return config;
-}());
+})();
