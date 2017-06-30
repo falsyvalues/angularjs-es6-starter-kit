@@ -153,8 +153,6 @@ export default (function makeWebpackConfig() {
 
 	if (isProd) {
 		config.plugins.push(
-			// http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
-			new webpack.NoErrorsPlugin(),
 			// Minimize all JavaScript output of chunks. Loaders are switched into minimizing mode.
 			// Reference: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
 			new webpack.optimize.UglifyJsPlugin({
