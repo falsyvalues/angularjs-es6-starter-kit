@@ -9,9 +9,9 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.10",
     "angular": "^1.6.6",
     "angular-resource": "^1.6.6",
-    "angular-ui-router": "^1.0.3",
     "normalize.css": "^7.0.0"
   },
   "devDependencies": {
