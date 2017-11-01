@@ -1,6 +1,6 @@
 import angular from 'angular';
 import angularResource from 'angular-resource';
-import angularUiRouter from 'angular-ui-router';
+import angularUiRouter from '@uirouter/angularjs';
 
 import {routing, run} from './app.config';
 
