@@ -32,7 +32,7 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
-    "style-loader": "^0.20.1",
+    "style-loader": "^0.20.3",
     "stylelint": "^9.1.1",
     "stylelint-config-standard": "^18.2.0",
     "webpack": "^3.10.0",
