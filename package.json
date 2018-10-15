@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.12",
-    "angular": "^1.7.2",
     "angular-resource": "^1.7.2"
   },
   "devDependencies": {
+    "angular": "^1.7.5",
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.5",
