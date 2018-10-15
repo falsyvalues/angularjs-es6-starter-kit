@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.12",
-    "angular-resource": "^1.7.2"
+    "angular-resource": "^1.7.5"
   },
   "devDependencies": {
     "angular": "^1.7.5",
