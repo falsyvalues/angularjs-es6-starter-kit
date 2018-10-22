@@ -1,7 +1,6 @@
 import path from 'path';
-import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -10,11 +9,14 @@ export default (function makeWebpackConfig() {
 
 	/**
 	 * Configuration begins here
-	 * Reference: http://webpack.github.io/docs/configuration.html
+	 * Reference: https://webpack.js.org/configuration/
 	 */
 
+	// Reference: https://webpack.js.org/concepts/mode/
+	config.mode = 'none';
+
 	// Cache generated modules and chunks to improve performance for multiple incremental builds.
-	// Reference: http://webpack.github.io/docs/configuration.html#cache
+	// Reference: https://webpack.js.org/configuration/other-options/#cache
 	config.cache = true;
 
 	// Mapping entry point
@@ -34,7 +36,9 @@ export default (function makeWebpackConfig() {
 		publicPath: './',
 		filename: isProd ? '[name].[chunkhash].js' : '[name].bundle.js',
 		// This is probably a bug, since chunks doesn't respect entry mapping in config
-		chunkFilename: isProd ? 'dist/[name].[chunkhash].js' : 'dist/[name].bundle.js'
+		chunkFilename: isProd
+			? 'dist/[name].[chunkhash].js'
+			: 'dist/[name].bundle.js'
 	};
 
 	// Choose a developer tool to enhance debugging.
@@ -54,50 +58,49 @@ export default (function makeWebpackConfig() {
 				// JS LOADER
 				// Reference: https://github.com/babel/babel-loader
 				// Transpile .js files using babel-loader (compile ES6 and ES7 into ES5 code)
-				test: /\.js$/,
+				test: /\.m?js$/,
 				exclude: /node_modules/,
-				// We may use ng-annotate module later
-				// Reference: https://github.com/jeffling/ng-annotate-webpack-plugin
-				loader: 'babel-loader',
-				options: {
-					// By default Babel is injecting helpers into each file that requires it.
-					// Require the babel runtime as a separate module to avoid the duplication.
-					// Reference: https://github.com/babel/babel-loader#babel-is-injecting-helpers-into-each-file-and-bloating-my-code
-					plugins: ['transform-runtime']
+				use: {
+					loader: 'babel-loader',
+					options: {
+						// By default Babel is injecting helpers into each file that requires it.
+						// Require the babel runtime as a separate module to avoid the duplication.
+						// Reference: https://github.com/babel/babel-loader#babel-is-injecting-helpers-into-each-file-and-bloating-my-code
+						plugins: ['@babel/plugin-transform-runtime']
+					}
 				}
 			},
 			{
 				test: /\.s?css$/,
-				use: ExtractTextPlugin.extract({
+				use: [
+					// MiniCssExtractPlugin
+					// https://github.com/webpack-contrib/mini-css-extract-plugin
 					// STYLE LOADER
 					// Reference: https://github.com/webpack-contrib/style-loader
-					fallback: 'style-loader',
-					use: [
-						{
-							// CSS LOADER
-							// Reference: https://github.com/webpack-contrib/css-loader
-							loader: 'css-loader',
-							options: {
-								importLoader: true,
-								// Enable CSS minification, this option has no connection to config.devtool
-								// Reference: https://github.com/webpack/webpack/issues/189
-								minimize: true,
-								sourceMap: true
-							}
-						},
-						{
-							// SASS LOADER
-							// Reference: https://github.com/webpack-contrib/sass-loader
-							loader: 'sass-loader',
-							options: {}
-						},
-						{
-							// POSTCSS LOADER
-							// Reference: https://github.com/postcss/postcss-loader
-							loader: 'postcss-loader'
+					isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+					// CSS LOADER
+					// Reference: https://github.com/webpack-contrib/css-loader
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 1
+							// Enable CSS minification, this option has no connection to config.devtool
+							// Reference: https://github.com/webpack/webpack/issues/189
+							// minimize: true,
+							// sourceMap: true
 						}
-					]
-				})
+					},
+					// SASS LOADER
+					// Reference: https://github.com/webpack-contrib/sass-loader
+					{
+						loader: 'sass-loader'
+					},
+					// POSTCSS LOADER
+					// Reference: https://github.com/postcss/postcss-loader
+					{
+						loader: 'postcss-loader'
+					}
+				]
 			},
 			{
 				// HTML LOADER
@@ -121,7 +124,7 @@ export default (function makeWebpackConfig() {
 
 	// HtmlWebpackPlugin
 	// Injects bundles in your main file instead of wiring all manually.
-	// Reference: https://github.com/ampedandwired/html-webpack-plugin
+	// Reference: https://github.com/jantimon/html-webpack-plugin
 	config.plugins.push(
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
@@ -129,36 +132,40 @@ export default (function makeWebpackConfig() {
 		})
 	);
 
-	// ExtractTextPlugin
-	// Extracting css chunks into a separate file
-	// Reference: https://github.com/webpack-contrib/extract-text-webpack-plugin
+	// MiniCssExtractPlugin
+	// This plugin extracts CSS into separate files.
+	// It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
+	// Reference: https://github.com/webpack-contrib/mini-css-extract-plugin
 	config.plugins.push(
-		new ExtractTextPlugin(isProd ? 'dist/style.[chunkhash].css' : 'dist/style.css')
+		new MiniCssExtractPlugin({
+			filename: isProd ? '[name].[hash].css' : '[name].css',
+			chunkFilename: isProd ? '[id].[hash].css' : '[id].css'
+		})
 	);
 
 	// Automatically move all modules defined outside of application directory to vendor bundle.
 	// If you are using more complicated project structure, consider to specify common chunks manually.
-	// Reference: http://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-	config.plugins.push(
-		new webpack.optimize.CommonsChunkPlugin({
-			// Destination path (entry config) mapping is also needed here
-			name: 'dist/vendor',
-			minChunks(module, count) {
-				return module.resource && (
-					module.resource.indexOf(path.resolve(__dirname, 'src', 'app')) === -1
-				);
+	// Reference: https://webpack.js.org/plugins/split-chunks-plugin/
+	// Migration questions: https://stackoverflow.com/questions/49017682/webpack-4-migration-commonschunkplugin
+	config.optimization = {
+		splitChunks: {
+			cacheGroups: {
+				vendor: {
+					name: 'vendor',
+					chunks: (chunk) => chunk.name == 'dist/app',
+					reuseExistingChunk: true,
+					priority: 1,
+					test: (module) => /[\\/]node_modules[\\/]/.test(module.context),
+					minChunks: 1,
+					minSize: 0
+				}
 			}
-		})
-	);
+		}
+	};
 
 	if (isProd) {
-		config.plugins.push(
-			// Minimize all JavaScript output of chunks. Loaders are switched into minimizing mode.
-			// Reference: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-			new webpack.optimize.UglifyJsPlugin({
-				mangle: false
-			})
-		);
+		// Reference: https://webpack.js.org/configuration/optimization/#optimization-minimize
+		config.optimization.minimize = true;
 	}
 
 	// Dev server configuration
