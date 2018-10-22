@@ -10,7 +10,7 @@ A starter repo for building scalable apps with [Angular](https://angularjs.org),
 - [x] Splitting bundles (vendor, app) with [CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin) for webpack
 - [x] [UglifyJs](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) for JavaScript minification
 - [x] [eslint](https://github.com/eslint/eslint)
-- [ ] [prettier](github.com/prettier/prettier) JavaScript formatter
+- [x] [prettier](github.com/prettier/prettier) JavaScript formatter
 - [x] [editorconfig](http://editorconfig.org)
 - [ ] NODE_ENV for configuration prod / dev using [webpack environment-plugin](https://webpack.js.org/plugins/environment-plugin)
 - [x] stylelint
