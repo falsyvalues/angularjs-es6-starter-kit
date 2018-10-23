@@ -19,7 +19,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
     "ajv": "^6.5.4",
-    "autoprefixer": "^9.2.1",
+    "autoprefixer": "^9.3.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.0",
     "eslint": "^5.7.0",
