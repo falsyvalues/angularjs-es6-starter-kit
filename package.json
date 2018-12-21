@@ -22,7 +22,7 @@
     "ajv": "^6.6.2",
     "autoprefixer": "^9.4.3",
     "babel-loader": "^8.0.4",
-    "css-loader": "^2.0.0",
+    "css-loader": "^2.0.2",
     "eslint": "^5.10.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-formatter-pretty": "^2.0.0",
