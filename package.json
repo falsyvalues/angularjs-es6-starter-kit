@@ -22,8 +22,8 @@
     "ajv": "^6.10.2",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.1.0",
-    "eslint": "^6.1.0",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-formatter-pretty": "^2.1.1",
     "eslint-plugin-import": "^2.18.2",
@@ -36,12 +36,12 @@
     "prettier": "^1.18.2",
     "raw-loader": "^3.1.0",
     "rimraf": "^2.6.3",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
+    "sass-loader": "^7.2.0",
+    "style-loader": "^1.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
-    "webpack": "^4.37.0",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   }
 }
